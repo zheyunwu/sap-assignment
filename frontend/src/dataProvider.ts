@@ -1,6 +1,5 @@
 import {
     CreateParams,
-    UpdateParams,
     DataProvider,
     fetchUtils
 } from "react-admin";
@@ -50,7 +49,7 @@ export const dataProvider: DataProvider = {
     // },
 
     create: (resource, params) => {
-        if (resource === "dockerfiles") {
+        if (resource === "images") {
             const formData = createPostFormData(params);
             return fetchUtils
                 .fetchJson(`${apiUrl}/${resource}`, {
