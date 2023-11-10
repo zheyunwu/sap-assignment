@@ -1,29 +1,32 @@
 # SAP Assignment
 
-This project contains source code of a RESTful service and a simple Web for users to upload *Dockerfile*. It includes two parts:
+This project contains two parts:
 
-- `backend/` - A Flask App to serve RESTful APIs.
-- `frontend/` - A React Web App for users to interact with.
+- A frontend Web App for users to list Docker images and build Docker images by uploading *Dockerfile*
+- A backend App to serve RESTful APIs
+
+![Architecture](./architecture.png)
 
 ## Directory Structure
 
     .
     ├── README.md
-    ├── backend                 # Backend code
-    │   ├── app.py              # Flask app
-    │   └── requirements.txt    # Python dependencie list
-    ├── frontend                # Frontend code
+    ├── backend                  # Backend code
+    │   ├── app.py               # Flask app
+    │   └── requirements.txt     # Python dependencies list
+    ├── frontend                 # Frontend code
     │   └── ...
-    ├── helloworld.dockerfile   # Dockerfile for testing
-    └── uploaded_dockerfiles    # Directory to store files uploaded by users
+    ├─ uploaded_dockerfiles      # Directory to store files uploaded by users
+    │   └── ...
+    └─── helloworld.dockerfile   # A Dockerfile for testing
 
 ## Backend
 
-The backend is built on top of [Flask](https://flask.palletsprojects.com/en/3.0.x/) - a web framework written in Python
+The backend is built on top of [Flask](https://flask.palletsprojects.com/en/3.0.x/) - a web framework based on Python.
 
 ### Backend - Prerequisites
 
-- Docker Enginer
+- Docker Engine
 - Python >= 3.8
 
 ### Backend - Getting started
@@ -50,7 +53,7 @@ The backend is built on top of [Flask](https://flask.palletsprojects.com/en/3.0.
 
 ## Frontend
 
-The frontend is built on top of [react-admin](https://github.com/marmelab/react-admin) - a [React](https://react.dev/)-based open source admin framework
+The frontend is built on top of [react-admin](https://github.com/marmelab/react-admin) - an open source framework for creating B2B apps based on [React](https://react.dev/).
 
 ### Frontend - Prerequisites
 
