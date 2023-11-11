@@ -17,10 +17,15 @@ def home():
 
 @app.route("/images", methods=["GET"])
 def listDockerfile():
+    """ API: List all docker images
+
+    Returns:
+        response (flask.Response): Response object
+    """
+
     # 1 Query docker images from docker client
     dockerfiles = []
     images = client.images.list()
-    # organize image objects in : REPOSITORY, TAG,IMAGE ID,CREATED,SIZE
     for image in images:
         for tag in image.tags:
             dockerfiles.append({
@@ -29,13 +34,6 @@ def listDockerfile():
                 'size': image.attrs['Size'],
                 'created': image.attrs['Created'],
             })
-    # for image in images:
-    #     dockerfiles.append({
-    #         'id': image.id,
-    #         'tags': image.tags,
-    #         'size': image.attrs['Size'],
-    #         'created': image.attrs['Created'],
-    #     })
 
     # 2 Return response
     response = {
@@ -46,6 +44,11 @@ def listDockerfile():
 
 @app.route("/images", methods=["POST"])
 def postDockerfile():
+    """ API: Create a Docker image through dockerfile
+
+    Returns:
+        response (flask.Response): Response object
+    """
 
     # 1 Get request payload
     tag_name = request.form.get('tag_name', None)
@@ -65,7 +68,7 @@ def postDockerfile():
         os.makedirs(path)
     dockerfile.save(f"{path}/{tag_name}.Dockerfile")
 
-    # 4 Build docker image asynchronously
+    # 4 Build docker image in background
     thread = threading.Thread(target=build_docker_image, args=(path, tag_name))
     thread.start()
 
@@ -77,6 +80,13 @@ def postDockerfile():
     return response, 202
 
 def build_docker_image(path, tag_name):
+    """ Build docker image
+
+    Args:
+        path (str): Path to dockerfile
+        tag_name (str): Tag name of docker image
+    """
+
     try:
         image, logs = client.images.build(path=path, tag=tag_name, dockerfile=f"{tag_name}.Dockerfile")
         print("Build completed", image, logs)
