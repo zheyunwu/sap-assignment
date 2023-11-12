@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Docker client
-client = docker.from_env()
+docker_client = docker.from_env()
 
 @app.route("/")
 def home():
@@ -25,7 +25,7 @@ def listDockerfile():
 
     # 1 Query docker images from docker client
     dockerfiles = []
-    images = client.images.list()
+    images = docker_client.images.list()
     for image in images:
         for tag in image.tags:
             dockerfiles.append({
@@ -88,11 +88,10 @@ def build_docker_image(path, tag_name):
     """
 
     try:
-        image, logs = client.images.build(path=path, tag=tag_name, dockerfile=f"{tag_name}.Dockerfile")
+        image, logs = docker_client.images.build(path=path, tag=tag_name, dockerfile=f"{tag_name}.Dockerfile", rm=True)
         print("Build completed", image, logs)
     except docker.errors.BuildError as e:
         print("Build failed", e)
-
 
 
 if __name__ == "__main__":
