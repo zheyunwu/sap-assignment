@@ -13,6 +13,7 @@ This project contains two parts:
     ├── README.md
     ├── backend                  # Backend code
     │   ├── app.py               # Flask app
+    │   ├── test_app.py          # Unit tests
     │   └── requirements.txt     # Python dependencies list
     ├── frontend                 # Frontend code
     │   └── ...
@@ -31,24 +32,45 @@ The backend is built on top of [Flask](https://flask.palletsprojects.com/en/3.0.
 
 ### Backend - Getting started
 
-1. Create a Python virtual environment:
+1. Create a Python virtual environment (for the first time):
 
     ```sh
     cd backend
     python3 -m venv venv
+    ```
+
+2. Enter Python virtual environment:
+
+    ```sh
+    cd backend
     source venv/bin/activate
     ```
 
-2. Install dependencies:
+3. Install dependencies:
 
     ```sh
-    pip3 install -r requirements.txt
+    pip install -r requirements.txt
     ```
 
-3. Start in development mode:
+4. Start in development mode:
 
     ```sh
-    python3 app.py
+    python app.py
+    ```
+
+### Backend - Unit Test
+
+1. Enter Python virtual environment:
+
+    ```sh
+    cd backend
+    source venv/bin/activate
+    ```
+
+2. Run test:
+
+    ```sh
+    python -m pytest test_app.py
     ```
 
 ## Frontend

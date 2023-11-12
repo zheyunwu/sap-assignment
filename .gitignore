@@ -1,2 +1,4 @@
 venv/
-backend/uploaded_dockerfiles/
+__pycache__/
+.pytest_cache/
+uploaded_dockerfiles/
