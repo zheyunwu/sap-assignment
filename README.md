@@ -25,6 +25,14 @@ This project contains two parts:
 
 The backend is built on top of [Flask](https://flask.palletsprojects.com/en/3.0.x/) - a web framework based on Python.
 
+Backend API endpoints:
+
+| Method   | URL                                | Description                                  | Request Payload Example                  |
+| -------- | ---------------------------------- | -------------------------------------------- | ---------------------------------------- |
+| `GET`    | `/`                                | Just for health check.                       |                                          |
+| `GET`    | `/api/images`                      | Retrieve all images.                         |                                          |
+| `POST`   | `/api/images`                      | Create a new image by uploading a Dockerfile.| {"tag_name": "image:latest", "dockerfile": file} |
+
 ### Backend - Prerequisites
 
 - Docker Engine
@@ -58,7 +66,7 @@ The backend is built on top of [Flask](https://flask.palletsprojects.com/en/3.0.
     python app.py
     ```
 
-### Backend - Unit Test
+### Backend - Unit Tests
 
 1. Enter Python virtual environment:
 
