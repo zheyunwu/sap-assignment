@@ -30,8 +30,8 @@ The backend serves the following API endpoints:
 | Method   | URL                                | Description                                  | Request Payload Example                  |
 | -------- | ---------------------------------- | -------------------------------------------- | ---------------------------------------- |
 | `GET`    | `/`                                | Just for health check.                       |                                          |
-| `GET`    | `/api/images`                      | Retrieve all images.                         |                                          |
-| `POST`   | `/api/images`                      | Create a new image by uploading a Dockerfile.| {"tag_name": "image:latest", "dockerfile": file} |
+| `GET`    | `/images`                      | Retrieve all images.                         |                                          |
+| `POST`   | `/images`                      | Create a new image by uploading a Dockerfile.| {"tag_name": "image:latest", "dockerfile": file} |
 
 ### Frontend
 
