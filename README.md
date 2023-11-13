@@ -10,14 +10,16 @@ This project contains two parts:
 ## Directory Structure
 
     .
-    ├── README.md
     ├── backend                  # Backend code
-    │   ├── app.py               # Flask app
-    │   ├── test_app.py          # Unit tests
-    │   └── requirements.txt     # Python dependencies list
+    │   ├── app.py                  # Flask app
+    │   ├── test_app.py             # Unit tests
+    │   └── requirements.txt        # Python dependencies list
     ├── frontend                 # Frontend code
     │   └── ...
-    └─── helloworld.dockerfile   # A Dockerfile for testing
+    ├── .gitignore
+    ├── docker-compose.yml       # Docker Compose file
+    ├── helloworld.dockerfile    # A Dockerfile for testing
+    └── README.md
 
 ### Backend
 
@@ -36,8 +38,6 @@ The backend serves the following API endpoints:
 The frontend is built on top of [react-admin](https://github.com/marmelab/react-admin) - an open source framework for creating B2B apps based on [React](https://react.dev/).
 
 The frontend provides the following views:
-
-<!-- ![List](./images/frontend-list.png) -->
 
 Docker Image List Page            |  Docker Image Upload Page
 :-------------------------:|:-------------------------:
