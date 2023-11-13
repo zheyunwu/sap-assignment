@@ -21,7 +21,7 @@ This project contains two parts:
     ├── helloworld.dockerfile    # A Dockerfile for testing
     └── README.md
 
-### Backend
+## Backend
 
 The backend is built on top of [Flask](https://flask.palletsprojects.com/en/3.0.x/) - a web framework based on Python.
 
@@ -33,7 +33,7 @@ The backend serves the following API endpoints:
 | `GET`    | `/images`                      | Retrieve all images.                         |                                          |
 | `POST`   | `/images`                      | Create a new image by uploading a Dockerfile.| {"tag_name": "image:latest", "dockerfile": file} |
 
-### Frontend
+## Frontend
 
 The frontend is built on top of [react-admin](https://github.com/marmelab/react-admin) - an open source framework for creating B2B apps based on [React](https://react.dev/).
 
@@ -48,11 +48,13 @@ Docker Image List Page            |  Docker Image Upload Page
 
 ### Option 1: Run in Docker (Recommended)
 
-**Prerequisites**
+---
+
+### Prerequisites
 
 - Docker Engine
 
-**Frontend + Backend**
+### Frontend + Backend
 
 ```sh
 # Start all at once
@@ -62,19 +64,19 @@ docker compose up
 docker compose down
 ```
 
-Access frontend at [localhost:8080](http://localhost:8080)
-
-Access backend at [localhost:8000](http://localhost:8000)
+> Then access backend at [localhost:8000](http://localhost:8000) + frontend at [localhost:8080](http://localhost:8080)
 
 ### Option 2: Run on local machine
 
-**Prerequisites**
+---
+
+### Prerequisites
 
 - Docker Engine
 - Python >= 3.8
 - Node.js >= 18
 
-**Backend**
+### Backend
 
 ```sh
 cd backend
@@ -92,9 +94,9 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Access backend at [localhost:8000](http://localhost:8000)
+> Then access backend at [localhost:8000](http://localhost:8000)
 
-**Frontend**
+### Frontend
 
 ```sh
 cd frontend
@@ -109,7 +111,7 @@ npm run dev
 npm run build
 ```
 
-Access frontend at [localhost:8080](http://localhost:8080)
+> Then access frontend at [localhost:8080](http://localhost:8080)
 
 ## Unit Tests (For backend)
 
