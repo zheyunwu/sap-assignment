@@ -5,7 +5,7 @@ This project contains two parts:
 - A frontend Web App for users to list Docker images and build Docker images by uploading *Dockerfile*
 - A backend App to serve RESTful APIs
 
-![Architecture](./architecture.png)
+![Architecture](./images/architecture.png)
 
 ## Directory Structure
 
@@ -17,15 +17,13 @@ This project contains two parts:
     │   └── requirements.txt     # Python dependencies list
     ├── frontend                 # Frontend code
     │   └── ...
-    ├─ uploaded_dockerfiles      # Directory to store files uploaded by users
-    │   └── ...
     └─── helloworld.dockerfile   # A Dockerfile for testing
 
-## Backend
+### Backend
 
 The backend is built on top of [Flask](https://flask.palletsprojects.com/en/3.0.x/) - a web framework based on Python.
 
-Backend API endpoints:
+The backend serves the following API endpoints:
 
 | Method   | URL                                | Description                                  | Request Payload Example                  |
 | -------- | ---------------------------------- | -------------------------------------------- | ---------------------------------------- |
@@ -33,40 +31,87 @@ Backend API endpoints:
 | `GET`    | `/api/images`                      | Retrieve all images.                         |                                          |
 | `POST`   | `/api/images`                      | Create a new image by uploading a Dockerfile.| {"tag_name": "image:latest", "dockerfile": file} |
 
-### Backend - Prerequisites
+### Frontend
+
+The frontend is built on top of [react-admin](https://github.com/marmelab/react-admin) - an open source framework for creating B2B apps based on [React](https://react.dev/).
+
+The frontend provides the following views:
+
+<!-- ![List](./images/frontend-list.png) -->
+
+Docker Image List Page            |  Docker Image Upload Page
+:-------------------------:|:-------------------------:
+<img src="./images/frontend-list.png" alt="List" width="600"/> | <img src="./images/frontend-upload.png" alt="Upload" width="600"/>
+<!-- ![List](./images/frontend-list.png =150x)  |  ![Upload](./images/frontend-upload.png) -->
+
+## Getting Started
+
+### Option 1: Run in Docker (Recommended)
+
+**Prerequisites**
+
+- Docker Engine
+
+**Frontend + Backend**
+
+```sh
+# Start all at once
+docker compose up
+
+# Clear all containers
+docker compose down
+```
+
+Access frontend at [localhost:8080](http://localhost:8080)
+
+Access backend at [localhost:8000](http://localhost:8000)
+
+### Option 2: Run on local machine
+
+**Prerequisites**
 
 - Docker Engine
 - Python >= 3.8
+- Node.js >= 18
 
-### Backend - Getting started
+**Backend**
 
-1. Create a Python virtual environment (for the first time):
+```sh
+cd backend
 
-    ```sh
-    cd backend
-    python3 -m venv venv
-    ```
+# [For the first time] Create a Python virtual environment
+python3 -m venv venv
 
-2. Enter Python virtual environment:
+# Enter Python virtual environment
+source venv/bin/activate
 
-    ```sh
-    cd backend
-    source venv/bin/activate
-    ```
+# Install dependencies
+pip install -r requirements.txt
 
-3. Install dependencies:
+# Run backend
+python app.py
+```
 
-    ```sh
-    pip install -r requirements.txt
-    ```
+Access backend at [localhost:8000](http://localhost:8000)
 
-4. Start in development mode:
+**Frontend**
 
-    ```sh
-    python app.py
-    ```
+```sh
+cd frontend
 
-### Backend - Unit Tests
+# Install dependencies
+npm install
+
+# Run frontend
+npm run dev
+
+# Build frontend
+npm run build
+```
+
+Access frontend at [localhost:8080](http://localhost:8080)
+
+## Unit Tests (For backend)
 
 1. Enter Python virtual environment:
 
@@ -79,33 +124,4 @@ Backend API endpoints:
 
     ```sh
     python -m pytest test_app.py
-    ```
-
-## Frontend
-
-The frontend is built on top of [react-admin](https://github.com/marmelab/react-admin) - an open source framework for creating B2B apps based on [React](https://react.dev/).
-
-### Frontend - Prerequisites
-
-- Node.js >= 18.16
-
-### Frontend - Getting started
-
-1. Install dependencies:
-
-    ```sh
-    cd frontend
-    npm install
-    ```
-
-2. Start in development mode:
-
-    ```sh
-    npm run dev
-    ```
-
-3. Build for production:
-
-    ```sh
-    npm run build
     ```
