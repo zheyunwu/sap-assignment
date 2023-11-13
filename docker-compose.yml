@@ -1,0 +1,22 @@
+version: '3'
+services:
+
+  sap-backend:
+    image: sap-backend:latest
+    container_name: sap-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      
+  sap-frontend:
+    image: sap-frontend:latest
+    container_name: sap-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
